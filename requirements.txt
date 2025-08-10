@@ -1,0 +1,9 @@
+Flask
+tensorflow
+scikit-learn
+numpy
+matplotlib
+pandas
+python-dotenv gunicorn
+rasterio
+gdal
