@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Desmatamento</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Monitoramento de Desmatamento</h1>
+    </header>
+
+    <main>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div class="info-panel">
+            <h2>Análise de Área</h2>
+            <div id="status-display">Clique em um local no mapa para analisar...</div>
+            
+            <div class="coordinates-input">
+                <label for="lat">Latitude:</label>
+                <input type="text" id="lat" readonly>
+                <label for="lon">Longitude:</label>
+                <input type="text" id="lon" readonly>
+                <button id="analyze-btn">Analisar Área</button>
+            </div>
+            
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Analisando, por favor, aguarde...</p>
+            </div>
+
+            <div id="result-container" class="hidden">
+                <div class="result-item">
+                    <span>Status:</span>
+                    <strong id="status-value"></strong>
+                </div>
+                <div class="result-item">
+                    <span>Confiança:</span>
+                    <strong id="confidence-value"></strong>
+                </div>
+                <div class="result-item">
+                    <span>Última Análise:</span>
+                    <strong id="last-analysis-date"></strong>
+                </div>
+                <canvas id="deforestationChart"></canvas>
+            </div>
+            <div id="error-message" class="hidden"></div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
